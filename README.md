@@ -1,3 +1,5 @@
+```
+
 ├─ /src
 │ ├─ /shared
 │ │ ├─ components/
@@ -73,3 +75,4 @@
 ├─ /src/
 | |- index.html
 | |- main.jsx
+```
