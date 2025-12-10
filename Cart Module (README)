@@ -1,0 +1,73 @@
+ Orange 3 — Cart Module (README)
+
+This is the complete **single–file README** that covers the entire Cart Module: structure, usage, features, integration, and examples — all in one place.
+
+---
+
+## 📁 Module Structure
+
+```
+/src/modules/cart
+│── components/
+│     ├── CartItem.jsx
+│     └── CartSummary.jsx
+│── pages/
+│     └── CartPage.jsx
+│── hooks/
+│     └── useCart.js
+│── services/
+│     └── cartService.js
+│── context/
+│     └── CartProvider.jsx
+└── index.js
+```
+
+Balanced, scalable, modular.
+
+---
+
+## 🚀 Features
+
+* Add to cart
+* Remove item
+* Update quantity
+* Auto calculate subtotal, tax, shipping
+* LocalStorage persistence
+* Optional global CartProvider
+* Tailwind-ready UI
+* Easy to replace mock API with real API
+
+---
+
+## 📦 Installation
+
+Required packages:
+
+```
+npm install react react-dom react-router-dom
+```
+
+If using Tailwind:
+
+```
+npm install -D tailwindcss postcss autoprefixer
+```
+
+---
+
+## 🔧 Usage: App Integration
+
+### Wrap the app with CartProvider (optional global state)
+
+```jsx
+import { CartProvider } from "./modules/cart/context/CartProvider";
+
+<BrowserRouter>
+  <CartProvider>
+    <App />
+  </CartProvider>
+</BrowserRouter>
+```
+
+
+
