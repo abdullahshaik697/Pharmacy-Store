@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth"; 
 
+
 const Login = () => {
   const { login, loading, error } = useAuth();
 
@@ -24,14 +25,14 @@ const Login = () => {
         Welcome to Our DHA Pharmacy Portal!
       </h1>
 
-      <h3 className="text-gray-500 font-serif text-center mb-2 text-sm md:text-base">
+      <h3 className="text-gray-500 font-serif text-center mb-4 text-sm md:text-base">
         Access your pharmacy dashboard instantly.
         </h3>
 
 
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
         <h2 className="text-xl md:text-2xl font-bold text-center mb-6 text-purple-700">
-          Login / Sign In
+          Login/Sign In
         </h2>
 
         {error && (
