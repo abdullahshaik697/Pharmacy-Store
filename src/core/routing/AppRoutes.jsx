@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import "./shared/styles/app.css";
+import "../../shared/styles/app.css";
 import Login from "../../modules/auth/pages/login";
 import Register from "../../modules/auth/pages/register";
 
@@ -10,15 +10,15 @@ const AppRoutes = () => {
         <>
             <Routes>
 
-                <Route path="/products" element={<Products />} />
-                <Route path="/products/:id" element={<ProductDetails />} />
+                {/* <Route path="/products" element={<Products />} /> */}
+                {/* <Route path="/products/:id" element={<ProductDetails />} /> */}
 
 
-                <Route path="/cart" element={<Cart />} />
+                {/* <Route path="/cart" element={<Cart />} /> */}
 
 
-                <Route path="/checkout" element={<Checkout />} />
-                <Route path="/order-success" element={<OrderSuccess />} />
+                {/* <Route path="/checkout" element={<Checkout />} /> */}
+                {/* <Route path="/order-success" element={<OrderSuccess />} /> */}
 
 
                 <Route path="/login" element={<Login />} />
