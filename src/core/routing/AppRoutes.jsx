@@ -1,12 +1,14 @@
+import { Routes, Route } from "react-router-dom";
 import "./shared/styles/app.css";
+import Login from "../../modules/auth/pages/login";
+import Register from "../../modules/auth/pages/register";
+
 
 const AppRoutes = () => {
 
     return (
         <>
             <Routes>
-
-         
 
                 <Route path="/products" element={<Products />} />
                 <Route path="/products/:id" element={<ProductDetails />} />
