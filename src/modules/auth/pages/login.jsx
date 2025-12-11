@@ -1,35 +1,37 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useAuth from "../hooks/useAuth"; 
 
 const Login = () => {
-  
+  const { login, loading, error } = useAuth();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
-    setLoading(true);
 
-    setTimeout(() => {
-      setLoading(false);
-      if (email === "pharmacy@gmail.com" && password === "123") {
-        alert("Login Successful!");
-      } else {
-        setError("Invalid email or password");
-      }
-    }, 1000);
+    const user = await login(email, password); 
+
+    if (user) {
+      alert("Login Successful!");
+    }
   };
 
   return (
-    
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-2">
-        <h1 className="text-red-700 font-medium text-center text-[30px] md:text-3xl mb-5 md:mb-10">Welcome to DHA Pharmacy Portal!</h1>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-purple-50 p-2">
+      <h1 className="text-red-600 font-bold text-center text-2xl md:text-4xl max-w-lg  mb-5 md:mb-5">
+        Welcome to Our DHA Pharmacy Portal!
+      </h1>
+
+      <h3 className="text-gray-500 font-serif text-center mb-2 text-sm md:text-base">
+        Access your pharmacy dashboard instantly.
+        </h3>
+
+
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
         <h2 className="text-xl md:text-2xl font-bold text-center mb-6 text-purple-700">
-          Login/Sign In
+          Login / Sign In
         </h2>
 
         {error && (
@@ -38,12 +40,9 @@ const Login = () => {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label htmlFor="email" className="block mb-1 font-medium">
-              Email
-            </label>
+            <label className="block mb-1 font-medium">Email</label>
             <input
               type="email"
-              id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
@@ -53,12 +52,9 @@ const Login = () => {
           </div>
 
           <div>
-            <label htmlFor="password" className="block mb-1 font-medium">
-              Password
-            </label>
+            <label className="block mb-1 font-medium">Password</label>
             <input
               type="password"
-              id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
@@ -77,15 +73,14 @@ const Login = () => {
         </form>
 
         <p className="text-sm text-gray-500 mt-4 text-center">
-  Don't have an account?{" "}
-  <Link
-    to="/register"
-    className="text-purple-600 font-semibold hover:underline"
-  >
-    Register
-  </Link>
-</p>
-
+          Don't have an account?{" "}
+          <Link
+            to="/register"
+            className="text-purple-600 font-semibold hover:underline"
+          >
+            Register
+          </Link>
+        </p>
       </div>
     </div>
   );

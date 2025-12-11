@@ -1,49 +1,52 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const Register = () => {
+  const { register, loading, error } = useAuth();
+  const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [localError, setLocalError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
+    setLocalError("");
 
     if (password !== confirmPassword) {
-      setError("Password do not match");
+      setLocalError("Passwords do not match");
       return;
     }
 
-    setLoading(true);
+    const newUser = await register(name, email, password);
 
-    setTimeout(() => {
-      setLoading(false);
+    if (newUser) {
       alert("Registration Successful!");
       setName("");
       setEmail("");
       setPassword("");
       setConfirmPassword("");
-    }, 1000);
+      navigate("/login");
+    }
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-2 ">
-        <h1 className="text-red-700 font-medium text-2xl mt-5 md:text-4xl mb-5 md:mb-4">DHA Pharmacy Portal</h1>
-         <h3 className="text-gray-600 font-serif text-center mb-2 text-sm md:text-base">
-      Create your account and access all features !
-    </h3>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-purple-50 p-2 ">
+      <h1 className="text-red-600 font-medium text-2xl mt-5 md:text-4xl mb-5 md:mb-4">DHA Pharmacy Portal</h1>
+      <h3 className="text-gray-500 font-serif text-center mb-4 text-sm md:text-base">
+        Create your account and access all features !
+      </h3>
+
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
         <h2 className="text-2xl font-bold text-center mb-6 text-purple-700">
           Register/Sign Up
         </h2>
 
-        {error && (
-          <p className="text-red-500 text-sm mb-4 text-center">{error}</p>
+        {(error || localError) && (
+          <p className="text-red-500 text-sm mb-4 text-center">{error || localError}</p>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
