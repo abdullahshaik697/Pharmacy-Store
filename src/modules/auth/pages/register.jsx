@@ -15,7 +15,7 @@ const Register = () => {
     setError("");
 
     if (password !== confirmPassword) {
-      setError("Passwords do not match");
+      setError("Password do not match");
       return;
     }
 
@@ -32,10 +32,14 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-2 ">
+        <h1 className="text-red-700 font-medium text-2xl mt-5 md:text-4xl mb-5 md:mb-4">DHA Pharmacy Portal</h1>
+         <h3 className="text-gray-600 font-serif text-center mb-2 text-sm md:text-base">
+      Create your account and access all features !
+    </h3>
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
         <h2 className="text-2xl font-bold text-center mb-6 text-purple-700">
-          Register
+          Register/Sign Up
         </h2>
 
         {error && (

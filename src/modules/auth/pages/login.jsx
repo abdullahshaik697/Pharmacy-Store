@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Login = () => {
-  // form state
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -15,7 +15,7 @@ const Login = () => {
 
     setTimeout(() => {
       setLoading(false);
-      if (email === "store@example.com" && password === "123") {
+      if (email === "pharmacy@gmail.com" && password === "123") {
         alert("Login Successful!");
       } else {
         setError("Invalid email or password");
@@ -24,10 +24,12 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-2">
+        <h1 className="text-red-700 font-medium text-center text-[30px] md:text-3xl mb-5 md:mb-10">Welcome to DHA Pharmacy Portal!</h1>
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-        <h2 className="text-2xl font-bold text-center mb-6 text-purple-700">
-          Login
+        <h2 className="text-xl md:text-2xl font-bold text-center mb-6 text-purple-700">
+          Login/Sign In
         </h2>
 
         {error && (
