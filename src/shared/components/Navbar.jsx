@@ -3,14 +3,29 @@ import { NavLink } from "react-router-dom";
 import "../styles/shared.css";
 
 const Navbar = () => {
+  const navItems = [
+    { path: "/", label: "Home" },
+    { path: "/products", label: "Products" },
+    { path: "/upload-prescription", label: "Upload Prescription" },
+    { path: "/prescription-status", label: "Prescription Status" },
+    { path: "/cart", label: "Cart" },
+    { path: "/login", label: "Login" },
+    { path: "/register", label: "Register" },
+  ];
+
   return (
     <nav className="navbar">
-      <NavLink to="/" className="nav-link">Home</NavLink>
-      <NavLink to="/products" className="nav-link">Products</NavLink>
-      <NavLink to="/cart" className="nav-link">Cart</NavLink>
-      <NavLink to="/checkout" className="nav-link">Checkout</NavLink>
-      <NavLink to="/login" className="nav-link">Login</NavLink>
-      <NavLink to="/register" className="nav-link">Register</NavLink>
+      {navItems.map((item) => (
+        <NavLink 
+          key={item.path}
+          to={item.path} 
+          className={({ isActive }) => 
+            `nav-link ${isActive ? 'bg-white bg-opacity-20 rounded px-3 py-1' : ''}`
+          }
+        >
+          {item.label}
+        </NavLink>
+      ))}
     </nav>
   );
 };

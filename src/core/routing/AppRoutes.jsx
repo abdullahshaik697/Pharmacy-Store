@@ -1,37 +1,34 @@
-// src/core/routing/AppRoutes.jsx
 import { Routes, Route } from "react-router-dom";
 import "../../shared/styles/app.css";
 
-// Import components - FIXED PATHS
-import Login from "../../modules/auth/pages/Login"; // Capital L
-import Register from "../../modules/auth/pages/Register"; // Capital R
+// Auth imports
+import Login from "../../modules/auth/pages/Login";
+import Register from "../../modules/auth/pages/Register";
 
-// Temporary placeholder components
-const Home = () => <div className="page">Home Page</div>;
+// Prescription imports
+import UploadPrescription from "../../modules/prescriptions/pages/UploadPrescription";
+import PrescriptionStatus from "../../modules/prescriptions/pages/PrescriptionStatus";
+
+// Placeholder components for other routes
+const Home = () => <div className="page">Welcome to Pharmacy Store</div>;
 const Products = () => <div className="page">Products Page</div>;
-const ProductDetails = () => <div className="page">Product Details</div>;
 const Cart = () => <div className="page">Cart Page</div>;
-const Checkout = () => <div className="page">Checkout Page</div>;
-const OrderSuccess = () => <div className="page">Order Success</div>;
 
 const AppRoutes = () => {
     return (
-        <>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                
-                <Route path="/products" element={<Products />} />
-                <Route path="/products/:id" element={<ProductDetails />} />
-                
-                <Route path="/cart" element={<Cart />} />
-                
-                <Route path="/checkout" element={<Checkout />} />
-                <Route path="/order-success" element={<OrderSuccess />} />
-                
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-            </Routes>
-        </>
+        <Routes>
+            <Route path="/" element={<Home />} />
+            
+            <Route path="/products" element={<Products />} />
+            
+            <Route path="/cart" element={<Cart />} />
+            
+            <Route path="/upload-prescription" element={<UploadPrescription />} />
+            <Route path="/prescription-status" element={<PrescriptionStatus />} />
+            
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+        </Routes>
     );
 };
 

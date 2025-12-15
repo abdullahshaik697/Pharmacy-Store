@@ -1,9 +1,13 @@
 import React from "react";
-import "../styles/shared.css";
 
-const Button = ({ label, onClick, type = "button" }) => {
+const Button = ({ label, onClick, type = "button", className = "", disabled = false }) => {
   return (
-    <button className="btn" type={type} onClick={onClick}>
+    <button 
+      className={`btn ${className} ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+      type={type} 
+      onClick={onClick}
+      disabled={disabled}
+    >
       {label}
     </button>
   );
