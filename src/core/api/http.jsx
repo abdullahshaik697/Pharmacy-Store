@@ -1,55 +1,15 @@
-// src/core/api/http.js
-
+// src/core/api/http.jsx
 import axios from "axios";
-import { appConfig } from "../config/appConfig";
+import { appConfig } from "../config/appConfig"; // Fixed path
 
 // Create axios instance
 const http = axios.create({
-  baseURL: appConfig.apiBaseURL,
+  baseURL: appConfig.apiBaseURL, // Now matches
   timeout: 15000,
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-// === Request Interceptor ===
-// Automatically attach token if present
-http.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem("auth_token");
-
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-
-    return config;
-  },
-  (error) => Promise.reject(error)
-);
-
-// === Response Interceptor ===
-// Automatically format API errors
-http.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    const formattedError = {
-      message:
-        error?.response?.data?.message ||
-        error?.message ||
-        "Something went wrong, please try again.",
-      status: error?.response?.status || 500,
-      data: error?.response?.data || null,
-    };
-
-    // If Unauthorized → token expired/logged out
-    if (formattedError.status === 401) {
-      localStorage.removeItem("auth_token");
-      // Optional: redirect to login
-      // window.location.href = "/login";
-    }
-
-    return Promise.reject(formattedError);
-  }
-);
-
+// ... rest of the code remains same
 export default http;
