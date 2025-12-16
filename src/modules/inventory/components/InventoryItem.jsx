@@ -133,8 +133,8 @@ const InventoryItem = ({ item }) => {
               <div>
                 <h4 className="font-medium text-gray-700 mb-2">Pricing</h4>
                 <div className="space-y-1 text-sm">
-                  <div><span className="text-gray-500">Unit Price:</span> ₹{item.price?.toFixed(2) || '0.00'}</div>
-                  <div><span className="text-gray-500">Cost Price:</span> ₹{(item.costPrice?.toFixed(2)) || 'N/A'}</div>
+                  <div><span className="text-gray-500">Unit Price:</span> RS{item.price?.toFixed(2) || '0.00'}</div>
+                  <div><span className="text-gray-500">Cost Price:</span> RS{(item.costPrice?.toFixed(2)) || 'N/A'}</div>
                   <div><span className="text-gray-500">Margin:</span> {item.price && item.costPrice ? `${(((item.price - item.costPrice) / item.costPrice) * 100).toFixed(1)}%` : 'N/A'}</div>
                 </div>
               </div>
