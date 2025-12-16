@@ -8,6 +8,7 @@ const Navbar = () => {
     { path: "/products", label: "Products" },
     { path: "/upload-prescription", label: "Upload Prescription" },
     { path: "/prescription-status", label: "Prescription Status" },
+    { path: "/inventory", label: "Inventory" },
     { path: "/cart", label: "Cart" },
     { path: "/login", label: "Login" },
     { path: "/register", label: "Register" },
@@ -20,7 +21,7 @@ const Navbar = () => {
           key={item.path}
           to={item.path} 
           className={({ isActive }) => 
-            `nav-link ${isActive ? 'bg-white bg-opacity-20 rounded px-3 py-1' : ''}`
+            `nav-link ${isActive ? 'bg-white bg-opacity-20 rounded px-3 py-1 font-semibold' : ''}`
           }
         >
           {item.label}
